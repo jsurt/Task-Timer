@@ -16,9 +16,25 @@ describe('app should return 200 status code and serve static html file', functio
         server.close(() => {console.log('server is closed')});
     });
 
-    it('should return a 200 status code and serve static html file', function() {
+    it('on get to root, should return login/signup page', function() {
         return chai.request(app)
             .get('/')
+            .then(function(res) {
+                expect(res).to.have.status(200);
+            })
+    });
+    
+    it('on get to root, should return timer page', function() {
+        return chai.request(app)
+            .get('/timer')
+            .then(function(res) {
+                expect(res).to.have.status(200);
+            })
+    })
+
+    it('on get to root, should return times page', function() {
+        return chai.request(app)
+            .get('/times')
             .then(function(res) {
                 expect(res).to.have.status(200);
             })

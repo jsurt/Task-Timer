@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: mfxWXMxaVhrbT6b1jOUYroaPnlWBRMuP4YgD7uoln36AlxFGRHJ5efbojJLFF+Mge2eYZ5qzXPIHR6zPIAQq2Ug3iORcJ0BRjeCqBv2ceBROnbu1ohdvai9GOH6NM5KMKEpG0UBF9Reut/4ep4XP/Cu6MYFiFID7wyv6ITYMypkyI7tTEn+lWq+1D2h8ydLTaba0L1GZEQLvRv7Hkm939D14/zRHucCqSCSeA1qcpwBv4dXceNHTtsr+NIL4kWVi72QtkyC59I9chtRJl9iRH54gu1dJS6hWcgnIAz5AdpkBU/qN/SxPinxXoOlQUpmjVGIGGp6tbeRmVIF7jJMbFAmAK7KrXQ8HPyWyyHvkPNhOwd+xe3b5zOEgL7zsAdOWLolVxJau1lFxgnT2spJ9v8eM+8QwHJDNj2BDWkZ6SqswjqFnPyD0/mua7L4Qnabo/tDsNmamuk0QZ5FVvPw41tHSZIn88UXE+9P16IUEv0Y6gckXAvVKOG5ln5+YIJcO7pbbn/BsHESFPOoe+uERyq9yVWj1npZCysC0rIfxOlj64ipBSAAvu2gWQ3x4OAc6PheVgQqgK49YnAORxaJRuTeSueJtN+vAo0ajz2l/jhDsuQVW0lSXds2EJRdGJzsY5UwB0Y+lxUJ1zBTBoIJp9nBMbzX50WrdS2ULHiD1ZHE=
+  app: js-cube
+  on:
+    repo: jsurt/js-cube

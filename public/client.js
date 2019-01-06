@@ -1,6 +1,6 @@
 'use strict'
 
-const MOCK_DATA = {
+/*const MOCK_DATA = {
     recordedTimes: [
         {
             "id": 111111,
@@ -39,10 +39,10 @@ const MOCK_DATA = {
             "date": new Date()
         }
     ]
-};
+};*/
 
 function getTimesData(callback) {
-    setTimeout(() => {callback(MOCK_DATA)}, 500);
+    return fetch('http://localhost:8080/solves')
 }
 
 function displayTimesData(data) {
@@ -61,6 +61,46 @@ function getAndDisplayTimes() {
     getTimesData(displayTimesData);
 }
 
-$(function() {
+function testDisplayData() {
     getAndDisplayTimes();
+}
+
+function testFunction() {
+     console.log('this is a test');
+}
+
+$(function() {
+    getTimesData();
 });
+
+const dataForScrambleAlg = [
+    "R",
+    "R'",
+    "R2",
+    "L",
+    "L'",
+    "L2",
+    "F",
+    "F'",
+    "F2",
+    "B",
+    "B'",
+    "B2",
+    "U",
+    "U'",
+    "U2",
+    "D",
+    "D'",
+    "D2",
+];
+
+function generateScrambleAlg(data) {
+    let scrambleAlg = [];
+    for (let i = 0; i < 20; i++) {
+        let randomIndex = Math.floor(Math.random() * 18);
+        scrambleAlg.push(data[randomIndex]);
+    }
+    return scrambleAlg;
+};
+
+generateScrambleAlg(dataForScrambleAlg);

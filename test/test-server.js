@@ -1,22 +1,24 @@
 const express = require('express');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const faker = require('faker');
 const expect = chai.expect;
 
 const { app, runServer, closeServer } = require('../server');
+const { TEST_DATABASE_URL } = require('../config');
 
 chai.use(chaiHttp);
 
-describe('app should return 200 status code and serve static html file', function() {
+describe("app should return 200 status code and serve static html file", function() {
 
     before(function() {
-        server = app.listen(process.env.PORT || 8000);
+        runServer(TEST_DATABASE_URL);
     });
     after(function() {
-        server.close(() => {console.log('server is closed')});
+        closeServer();
     });
 
-    it('on get to root, should return login/signup page', function() {
+    it("on get to root, should return 'login/signup' page", function() {
         return chai.request(app)
             .get('/')
             .then(function(res) {
@@ -24,7 +26,7 @@ describe('app should return 200 status code and serve static html file', functio
             })
     });
     
-    it('on get to root, should return timer page', function() {
+    it("on get to root, should return 'timer' page", function() {
         return chai.request(app)
             .get('/timer')
             .then(function(res) {
@@ -32,9 +34,9 @@ describe('app should return 200 status code and serve static html file', functio
             })
     })
 
-    it('on get to root, should return times page', function() {
+    it("on get to root, should return 'solves' page", function() {
         return chai.request(app)
-            .get('/times')
+            .get('/solves')
             .then(function(res) {
                 expect(res).to.have.status(200);
             })

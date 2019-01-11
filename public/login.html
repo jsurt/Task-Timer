@@ -5,9 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Staatliches" rel="stylesheet">
+    <link rel="stylesheet" href="login-styles.css">
+    <link rel="stylesheet" href="logo-styles.css">
 </head>
 <body>
-    <h1>Login/Signup page</h1>
+    <div class="main-wrap">
+        <div class="logo-wrap">
+            <h1 class="logo">
+                <span class="red">C</span>
+                <span class="white">u</span>
+                <span class="orange">b</span>
+                <span class="green">e</span>
+                <span class="red" id="hyphen">-</span>
+                <span class="yellow">J</span>
+                <span class="blue">S</span>
+            </h1>
+        </div>    
+        <div class="forms-wrap">
+            <div class="login-signup-links">
+                <a href="" class="login-link selected-form">Login</a>
+                <span class="links-divider"> | </span>
+                <a href="" class="signup-link">Sign up</a>
+        </div>
+            <div class="login-form-wrap">
+                <form action="POST" class="login-form">
+                    <!--<label for="username">Username</label>-->
+                    <input type="text" id="username" autocomplete="off" placeholder="Username">
+                    <!--<label for="password">Password</label>-->
+                    <input type="password" id="password" autocomplete="off" placeholder="Password">
+                    <p class="demo-info">For a quick trial, use username "demo123" and password "password"</p>
+                    <div class="button-div">
+                        <button class="submit-login" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-form-wrap">
+                <form action="POST" class="signup-form" hidden>
+                    <h2 class="signup-header">Sign Up</h2>
+                    <input type="text" id="firstName" autocomplete="off" placeholder="Firstname"/>
+                    <input type="text" id="lastName" autocomplete="off" placeholder="Lastname"/>  
+                    <input type="text" id="userName" autocomplete="off" placeholder="Username"/> 
+                    <input type="password" id="password" autocomplete="off" placeholder="Password"/> 
+                    <input type="password" id="confirm-password" autocomplete="off" placeholder="Confirm password"/>
+                    <p class="demo-info password-requirements">*Password must be at least <span class="underline">8 </span>characters long and contain a <span class="underline">number</span></p>  
+                    <div class="button-div">
+                        <button class="submit-signup" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="client.js"></script>

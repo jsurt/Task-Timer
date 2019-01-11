@@ -10,18 +10,27 @@ const { Solve, User } = require('./models')
 app.use(express.json());
 app.use(express.static('public'));
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  if (req.method === 'OPTIONS') {
+    return res.send(204);
+  }
+  next();
+});
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/login.html');
     res.status(200);
 });
 
-app.get('/timer', (req, res) => {
-    res.sendFile(__dirname + '/public/timer.html');
-    res.status(200);
-});
+app.get('/dev', (req, res) => {
+  res.sendFile(__dirname + '/public/timer.html');
+})
 
 app.get('/solves', (req, res) => {
-    res.sendFile(__dirname + '/public/solves.html');
+    
     Solve
         .find()
         .then(solves => {
@@ -47,27 +56,48 @@ app.get('/solves/:id', (req, res) => {
         });
 });
 
-app.post('/solves', (req, res) => {
-    const requiredFields = ['time', 'notes', 'scrambleAlg'];
-    for (let i = 0; i < requiredFields.length; i++) {
-      const field = requiredFields[i];
-      if (!(field in req.body)) {
-        const msg = `Missing ${field} field in request body`;
-        console.error(msg);
-        res.status(400).send(msg);
+app.post('/users/:id/solves', (req, res) => {
+  
+  const requiredFields = ['time', 'notes', 'scrambleAlg', 'date'];
+  requiredFields.forEach(field => {
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`;
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  });
+
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (user) {
+        Solve
+          .create({
+            solverId: req.params.id,
+            time: req.body.time,
+            notes: req.body.notes,
+            scrambleAlg: req.body.scrambleAlg,
+            date: req.body.date
+          })
+          .then(solve => res.status(201).json({
+            time: solve.time,
+            notes: solve.notes
+          }))
+          .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'Something went wrong' });
+          });
       }
-    };
-    Solve.create({
-      time: req.body.time,
-      notes: req.body.notes,
-      scrambleAlg: req.body.scrambleAlg,
-      date: new Date()
+      else {
+        const message = `User not found`;
+        console.error(message);
+        return res.status(400).send(message);
+      }
     })
-        .then(solve => res.status(201).json(solve.serialize()))
-        .catch(err => {
-          console.error(err);
-          res.status(500).json({message: 'Internal server error'});
-        });
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'something went horribly awry' });
+    });
 });
 
 app.put('/solves/:id', (req, res) => {
@@ -104,8 +134,54 @@ app.delete('/solves/:id', (req, res) => {
       });
 });
 
+app.delete('/users/:id', (req, res) => {
+  User.findByIdAndRemove(req.params.id)
+    .then(solve => {
+      res.status(204).end();
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({message: 'Internal server error'});
+    });
+});
+
+app.get('/users/:id', (req, res) => {
+    User.findById(req.params.id) 
+      .then(user => {
+        res.status(200).json(user);
+        res.sendFile(__dirname + '/public/timer.html');
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({message: 'Internal server error'});
+      });
+});
+
+app.get('/users/:id/solves', (req, res) => {
+  Solve.find({solverId: req.params.id}) 
+    .then(solves => {
+      res.status(200).json(solves);
+      res.sendFile(__dirname + '/public/solves.html');
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({message: 'Internal server error'});
+    });
+});
+
+app.get('/solves/:id', (req, res) => {
+  Solve.findById(req.params.id) 
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({message: 'Internal server error'});
+    });
+});
+
 app.post('/users', (req, res) => {
-    const requiredFields = ['firstName', 'lastName', 'email', 'userName'];
+    const requiredFields = ['firstName', 'lastName', 'userName'];
     for (let i = 0; i < requiredFields.length; i++) {
       const field = requiredFields[i];
       if (!(field in req.body)) {
@@ -117,7 +193,6 @@ app.post('/users', (req, res) => {
     User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      email: req.body.email,
       userName: req.body.userName
     })
       .then(user => {
@@ -128,6 +203,16 @@ app.post('/users', (req, res) => {
         res.status(500).json({message: 'Internal server error'});
       })
 });
+
+app.get('/users', (req, res) => {
+  User.find()
+    .then(users => {
+      res.json({
+        user: users.map(
+          (users) => users.serialize())
+      })
+    })
+})
 
 let server;
 

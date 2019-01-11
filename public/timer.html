@@ -5,11 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Staatliches" rel="stylesheet">
+    <link rel="stylesheet" href="timer-styles.css">
+    <link rel="stylesheet" href="logo-styles.css">
 </head>
 <body>
-    
-    <h1>Timer page</h1>
-
+    <div class="logo-wrap">
+        <h1 class="corner-logo">
+            <span class="red">C</span>
+            <span class="white">u</span>
+            <span class="orange">b</span>
+            <span class="green">e</span>
+            <span class="red" id="hyphen">-</span>
+            <span class="yellow">J</span>
+            <span class="blue">S</span>
+        </h1>
+    </div>
+    <p class="dimension-label">3x3x3</p>
+    <section class="timer-scramble">
+        <div class="timer-div">
+            <span class="seconds">0</span>
+            <span class="decimal-point">.</span>
+            <span class="milliseconds">00</span>
+        </div>
+        <div class="instructions-div">
+            <p class="instructions">(Press spacebar to start/stop timer)</p>
+        </div>
+        <div class="scramble-div">
+            <p class="js-scramble"></p>
+        </div>
+    </section>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="client.js"></script>

@@ -6,18 +6,17 @@ const solveSchema = mongoose.Schema({
     time: Number,
     notes: String,
     scrambleAlg: String,
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    date: Date
+    solverId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    date: String
 });
 
 const userSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
-    email: String,
     userName: {
         type: String,
         unique: true
-    }
+    },
 });
 
 userSchema.virtual('fullName').get(function() {
@@ -27,6 +26,7 @@ userSchema.virtual('fullName').get(function() {
 solveSchema.methods.serialize = function() {
     return  {
         id: this._id,
+        solverId: this.solverId,
         time: this.time,
         notes: this.notes,
         scrambleAlg: this.scrambleAlg,
@@ -37,7 +37,8 @@ solveSchema.methods.serialize = function() {
 userSchema.methods.serialize = function() {
     return {
         id: this._id,
-        fullName: this.fullName
+        fullName: this.fullName,
+
     }
 }
 

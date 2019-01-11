@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #000000;
+    color: #ffffff;
+}
+
+.dimension-label, .instructions-div, .scramble-div {
+    font-family: "Raleway";
+}
+
+.dimension-label {
+    position: fixed;
+    top: 1px;
+    right: 5px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    font-size: 22px;
+    border-left: 2px solid #0045AD;
+    border-bottom: 2px solid #FFD500
+}
+
+.timer-scramble {
+    max-width: 1000px;
+    text-align: center;
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.timer-div {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.seconds {
+    font-size: 164px;
+}
+
+.decimal-point, .milliseconds {
+    font-size: 96px;
+}
+
+.instructions-div {
+    font-size: 12px;
+}
+
+.scramble-div {
+    font-size: 22px;
+}

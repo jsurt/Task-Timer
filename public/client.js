@@ -1,49 +1,65 @@
 'use strict'
 
-/*const MOCK_DATA = {
-    recordedTimes: [
-        {
-            "id": 111111,
-            "time": 40.2,
-            "notes": 'man, that was a great solve',
-            "date": new Date()
-        },
-        {
-            "id": 222222,
-            "time": 35.2,
-            "notes": 'hey that was better',
-            "date": new Date()
-        },
-        {
-            "id": 333333,
-            "time": 41.1,
-            "notes": 'oof, not as good',
-            "date": new Date()
-        },
-        {
-            "id": 444444,
-            "time": 23.5,
-            "notes": 'well that was great!!!',
-            "date": new Date()
-        },
-        {
-            "id": 555555,
-            "time": 45.0,
-            "notes": 'dang back to square one',
-            "date": new Date()
-        },
-        {
-            "id": 666666,
-            "time": 39.3,
-            "notes": 'ehhhhhhhh',
-            "date": new Date()
-        }
-    ]
-};*/
-
-function getTimesData(callback) {
-    return fetch('http://localhost:8080/solves')
+// This code is to display the requested form, either login or sign up
+function selectLoginOrSignupForm() {
+    let $loginLink = $('.login-link');
+    let $signupLink = $('.signup-link');
+    let $loginForm = $('.login-form');
+    let $signupForm = $('.signup-form');
+    $signupLink.on('click', (event) => {
+        event.preventDefault();
+        if (!($signupLink.hasClass('.selected-form'))) {
+            $loginLink.removeClass('selected-form');
+            $signupLink.addClass('selected-form');
+            $loginForm.attr('hidden', true);
+            $signupForm.attr('hidden', false);
+        } 
+    });
+    $loginLink.on('click', (event) => {
+        event.preventDefault();
+        if (!($loginLink.hasClass('.selected-form'))) {
+            $loginLink.addClass('selected-form');
+            $signupLink.removeClass('selected-form');
+            $loginForm.attr('hidden', false);
+            $signupForm.attr('hidden', true);
+        } 
+    });
 }
+
+selectLoginOrSignupForm();
+
+// AJAX request to the backend for user sign up
+function userSignUp() {
+    $('.submit-signup').click(() => {
+        $('.signup-form').submit((event) => {
+            event.preventDefault();
+            console.log('form submitted');
+            postUserSignUp();
+        });
+    });   
+}
+
+function postUserSignUp() {
+    const settings = {
+        url: '/users',
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify({
+            firstName: $('#firstName').val(),
+            lastName: $('#lastName').val(),
+            userName: $('#userName').val()
+        }),
+        contentType: "application/json; charset=utf-8",
+        success: function() {
+            console.log('data sent to server');
+            $('input').val('');
+        }
+    };
+    $.ajax(settings);
+}
+
+userSignUp();
+
 
 function displayTimesData(data) {
     for (let i = 0; i < data.recordedTimes.length; i++) {
@@ -69,10 +85,8 @@ function testFunction() {
      console.log('this is a test');
 }
 
-$(function() {
-    getTimesData();
-});
 
+// Generate random turns for a cube scramble
 const dataForScrambleAlg = [
     "R",
     "R'",
@@ -98,9 +112,15 @@ function generateScrambleAlg(data) {
     let scrambleAlg = [];
     for (let i = 0; i < 20; i++) {
         let randomIndex = Math.floor(Math.random() * 18);
-        scrambleAlg.push(data[randomIndex]);
+        scrambleAlg.push(`${data[randomIndex]}   `);
     }
+    console.log(scrambleAlg);
     return scrambleAlg;
 };
 
+function displayScrambleAlg(data) {
+    $('.js-scramble').append(generateScrambleAlg(dataForScrambleAlg));
+};
+
 generateScrambleAlg(dataForScrambleAlg);
+displayScrambleAlg(dataForScrambleAlg);

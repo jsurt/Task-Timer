@@ -7,7 +7,7 @@ body {
     color: #ffffff;
 }
 
-.dimension-label, .instructions-div, .scramble-div {
+.dimension-label, .instructions-div, .scramble-div, .stats-notes-section {
     font-family: "Raleway";
 }
 
@@ -23,7 +23,7 @@ body {
     border-bottom: 2px solid #FFD500
 }
 
-.timer-scramble {
+.timer-scramble-section {
     max-width: 1000px;
     text-align: center;
     position: fixed;
@@ -49,5 +49,70 @@ body {
 }
 
 .scramble-div {
-    font-size: 22px;
+    font-size: 18px;
+}
+
+.stats-notes-section {
+    width: 640px;
+    margin: auto; 
+    position: relative;
+    top: 550px;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+.column {
+    border-bottom: 1px solid;
+}
+
+.column1 {
+    border-bottom-color: #0045AD;
+}
+
+.column2 {
+    border-bottom-color: #ffffff;
+}
+
+.column3 {
+    border-bottom-color: #FFD500;
+}
+
+.column-title {
+    padding-bottom: 3px;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 2px solid;
+}
+
+.column1-title {
+    border-bottom-color:#FF5900;
+} 
+
+.column2-title { 
+    border-bottom-color:#B90000;
+}
+
+.column3-title {
+    border-bottom-color:#009B48;
+}
+
+.solve-list {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.solve-list-item {
+    padding: 10px 15px 10px 15px;
+}
+
+.time {
+    color: #009B48;
+}
+
+#solve-notes {
+    resize: none;
+    display: block;
+    margin: auto;
+    font-size: 14px;
+    border-radius: 8px;
 }

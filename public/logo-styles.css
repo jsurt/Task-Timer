@@ -1,11 +1,13 @@
 .logo {
     text-align: center;
-    font-size: 108px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 62px;
     font-family: "Staatliches";
 }
 
 .corner-logo {
-    position: fixed;
+    position: absolute;
     top: 1px;
     left: 10px;
     margin-top: 5px;

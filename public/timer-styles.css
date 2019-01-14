@@ -7,12 +7,24 @@ body {
     color: #ffffff;
 }
 
+.logo-wrap {
+    overflow: auto;
+    overflow: initial;
+    height: 50px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 10;
+    background: #000000;
+}
+
 .dimension-label, .instructions-div, .scramble-div, .stats-notes-section {
     font-family: "Raleway";
 }
 
 .dimension-label {
-    position: fixed;
+    position: absolute;
     top: 1px;
     right: 5px;
     margin-top: 5px;
@@ -26,8 +38,9 @@ body {
 .timer-scramble-section {
     max-width: 1000px;
     text-align: center;
-    position: fixed;
-    top: 35%;
+    position: absolute;
+    margin-bottom: 50px;
+    top: 200px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -36,46 +49,33 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
-.seconds {
-    font-size: 164px;
+.minutes, .seconds {
+    font-size: 64px;
 }
 
-.decimal-point, .milliseconds {
-    font-size: 96px;
+.colon, .decimal-point, .milliseconds {
+    font-size: 32px;
 }
 
-.instructions-div {
+.desktop-instructions {
     font-size: 12px;
+    display: none;
 }
 
 .scramble-div {
+    width: 320px;
     font-size: 18px;
 }
 
 .stats-notes-section {
-    width: 640px;
+    width: 320px;
     margin: auto; 
     position: relative;
-    top: 550px;
+    top: 275px;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
 }
 
-.column {
-    border-bottom: 1px solid;
-}
-
-.column1 {
-    border-bottom-color: #0045AD;
-}
-
-.column2 {
-    border-bottom-color: #ffffff;
-}
-
-.column3 {
-    border-bottom-color: #FFD500;
-}
 
 .column-title {
     padding-bottom: 3px;
@@ -107,12 +107,39 @@ body {
 
 .time {
     color: #009B48;
+    padding-top: 0px;
 }
 
 #solve-notes {
     resize: none;
     display: block;
     margin: auto;
+    padding: 5px;
     font-size: 14px;
-    border-radius: 8px;
+    border-radius: 1px;
+    border: none;
+    background: #003f9d;
+    color: #ffffff;
+    transition: background-color 0.4s ease 0s;
+}
+
+#solve-notes:focus {
+    background: #004cbd;
+    outline: none;
+}
+
+#solve-notes::placeholder {
+    color: #ffffff;
+}
+
+.js-timer-ready-color {
+    background: #B90000;
+}
+
+.js-timer-running-color {
+    background: #009B48;
+}
+
+.center-timer {
+    margin-top: 80%;
 }

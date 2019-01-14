@@ -85,6 +85,84 @@ function testFunction() {
      console.log('this is a test');
 }
 
+// For stopwatch
+let status = 0;
+let time = 0;
+
+function startTimer() {
+    status = 1;
+    timer();
+}
+
+function stopTimer() {
+    status = 0;
+}
+
+function resetTimer() {
+    status = 0;
+    time = 0;
+}
+
+function timer() {
+    if (status == 1) {
+        setTimeout(function() {
+            time++
+            let min = Math.floor(time/100/60);
+            let sec = Math.floor(time/100);
+            let millisec = time % 100;
+            if (min < 10) {
+                min = '0' + min;
+            }
+            if (sec >= 60) {
+                sec = sec % 60;
+            }
+            if (sec < 10) {
+                sec = '0' + sec;
+            }
+            //$('.timer-div').html(`${min} : ${sec} : ${millisec}`);
+            $('.minutes').html(min);
+            $('.seconds').html(sec);
+            $('.milliseconds').html(millisec);
+            timer();
+        }, 10);
+    }
+}
+
+//For starting and stopping timer
+$('body').keydown(function(e){
+    if (e.keyCode == 32) {
+        if (status == 0) {
+            resetTimer();
+            $('.logo-wrap').hide();
+            $('.instructions-div').hide();
+            $('.scramble-div').hide();
+            $('.stats-notes-section').hide();
+            $('*').addClass('js-timer-ready-color');
+            $('.timer-div').addClass('center-timer');
+        }
+    }
+})
+
+$('body').keyup(function(e){
+    if(e.keyCode == 32){
+        if (status == 0) {
+            
+            $('*').addClass('js-timer-running-color');
+            $('.timer-div').addClass('center-timer');
+            startTimer();
+        } else {
+            $('.logo-wrap').show();
+            $('.instructions-div').show();
+            $('.scramble-div').show();
+            $('.stats-notes-section').show();
+            $('*').removeClass('js-timer-running-color').removeClass('js-timer-ready-color');
+            $('.timer-div').removeClass('center-timer');
+            stopTimer();
+            
+        }
+    }
+ });
+
 
 // Generate random turns for a cube scramble
 const dataForScrambleAlg = [
@@ -122,5 +200,6 @@ function displayScrambleAlg(data) {
     $('.js-scramble').append(generateScrambleAlg(dataForScrambleAlg));
 };
 
-generateScrambleAlg(dataForScrambleAlg);
 displayScrambleAlg(dataForScrambleAlg);
+
+

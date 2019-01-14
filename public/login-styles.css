@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     height: 100%;
     width: 100%;
@@ -15,10 +20,9 @@ body {
     padding-right: 20px;
     margin: auto;
     position: absolute;
-    top: 100px;
+    top: 10%;
     right: 0;
     left: 0;
-    bottom: 0;
 }
 
 .logo {
@@ -76,9 +80,8 @@ body {
 form {
     margin: auto;
     padding-top: 45px;
-    width: 550px;
+    width: 280px;
     height: 300px;
-    border-radius: 25px;
     text-align: center;
     /*border: 6px dashed #B90000;*/
     /*background-color: #ffe252;*/
@@ -98,14 +101,13 @@ label {
 
 input {
     margin-top: 35px;
-    margin-left: 25px;
+    margin: auto;
     height: 40px;
-    width: 325px;
+    width: 175px;
     border-top: 0px;
     border-left: 0px;
     border-bottom: 2px solid #B90000;
     border-right: 0px;
-    border-radius: 2px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     font-size: 16px;
@@ -123,10 +125,10 @@ input::placeholder {
 }
 
 .demo-info {
-    width: 100px;
-    position: relative;
-    left: 450px;
-    bottom: 125px;
+    width: 275px;
+    margin: auto;
+    position: absolute;
+    bottom: 0px;
     color: #ffffff;
     font-style: italic;
 }
@@ -162,6 +164,7 @@ input::placeholder {
 
 .signup-form {
     padding-top: 0px;
+    height: 250px;
 }
 
 .button-div {
@@ -169,17 +172,18 @@ input::placeholder {
 }
 
 .submit-login, .submit-signup {
-    position: relative;
-    bottom: 100px;
-    width: 100px;
+    /*position: relative;*/
+    width: 105px;
     height: 50px;
+    margin: auto;
+    margin-top: 45px;
     border: none;
     border-radius: 2px;
     color: #ffffff;
     font-size: 18px;
     background: #009B48;
     background-position: center; 
-    margin: auto;
+    
 }
 
 .submit-login:hover, .submit-signup:hover {

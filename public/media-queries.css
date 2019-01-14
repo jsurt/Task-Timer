@@ -1,0 +1,58 @@
+@media only screen and (min-width: 600px) {
+    .logo-wrap {
+        width: 100%;
+    }
+    .logo {
+        font-size: 108px;
+        margin: auto;
+    }
+    input {
+        width: 325px;
+        margin-left: auto;
+    }
+    .login-form, .signup-form {
+        height: 300px;
+    }
+    .minutes, .seconds {
+        font-size: 164px;
+    }
+    
+    .colon, .decimal-point, .milliseconds {
+        font-size: 96px;
+    }
+
+    .desktop-instructions {
+        display: block;
+    }
+
+    .mobile-instructions {
+        display: none;
+    }
+
+    .timer-scramble-section {
+        top: 20%;
+    }
+
+    .scramble-div {
+        width: 450px;
+    }
+
+    .stats-notes-section {
+        width: 640px;
+        margin: auto; 
+        position: relative;
+        top: 450px;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+    }
+}
+
+/*@media only screen and (min-width: 600px) {
+    .minutes, .seconds {
+        font-size: 164px;
+    }
+    
+    .colon, .decimal-point, .milliseconds {
+        font-size: 96px;
+    }
+}*/

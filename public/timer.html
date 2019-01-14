@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway|Staatliches" rel="stylesheet">
     <link rel="stylesheet" href="timer-styles.css">
     <link rel="stylesheet" href="logo-styles.css">
+    <link rel="stylesheet" href="media-queries.css">
 </head>
 <body>
     <div class="logo-wrap">
@@ -21,16 +22,20 @@
             <span class="yellow">J</span>
             <span class="blue">S</span>
         </h1>
+        <p class="dimension-label">3x3x3</p>
     </div>
-    <p class="dimension-label">3x3x3</p>
+    
     <section class="timer-scramble-section">
         <div class="timer-div">
+            <span class="minutes" hidden>0</span>
+            <span class="colon" hidden>:</span>
             <span class="seconds">0</span>
             <span class="decimal-point">.</span>
             <span class="milliseconds">00</span>
         </div>
         <div class="instructions-div">
-            <p class="instructions">(Press spacebar to start/stop timer)</p>
+            <p class="desktop-instructions">(Press spacebar to start/stop timer)</p>
+            <p class="mobile-instructions">Touch screen to start/stop timer</p>
         </div>
         <div class="scramble-div">
             <p class="js-scramble"></p>
@@ -38,18 +43,19 @@
     </section>
     <section class="stats-notes-section">
         <div class="column column1">
+            <h2 class="column-title column2-title">Notes for this solve</h2>
+            <form action="POST" class="solve-notes-form">
+                <textarea name="notes" id="solve-notes" cols="25" rows="10" placeholder="Make important notes about this solve here" maxlength="160"></textarea>
+                <!--<div contenteditable="true" class="contenteditable"></div>-->
+            </form>
+        </div>
+        <div class="column column2">
             <h2 class="column-title column1-title">Previous Solve</h2>
             <ul class="solve-list">
                 <li class="solve-list-item time">23.13 sec</li>
                 <li class="solve-list-item solve-scramble">F D' U2 U' L2 D' B B' B' L2 L2 D L D' D U' L' R2 L' F'</li>
                 <li class="solve-list-item solve-notes">Lol first time with the OLL's. That did a lot to lower my time. I still need to finish the white cross faster...</li>
             </ul>
-        </div>
-        <div class="column column2">
-            <h2 class="column-title column2-title">Notes</h2>
-            <form action="POST" class="solve-notes-form">
-                <textarea name="notes" id="solve-notes" cols="25" rows="10" placeholder="Make important notes about this solve here"></textarea>
-            </form>
         </div>
         <div class="column column3">
             <h2 class="column-title column3-title">Best Solve</h2>

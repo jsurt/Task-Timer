@@ -15,8 +15,13 @@ const userSchema = mongoose.Schema({
     lastName: String,
     userName: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
 userSchema.virtual('fullName').get(function() {
@@ -36,10 +41,17 @@ solveSchema.methods.serialize = function() {
 
 userSchema.methods.serialize = function() {
     return {
-        id: this._id,
         fullName: this.fullName,
-
+        userName: this.userName
     }
+}
+
+userSchema.methods.validatePassword = function(password) {
+    return bcrypt.compare(password, this.password);
+}
+
+userSchema.statics.hashPassword = function(password) {
+    return bcrypt.hash(password, 10);
 }
 
 const Solve = mongoose.model('Solve', solveSchema);

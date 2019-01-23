@@ -12,60 +12,66 @@
     <link rel="stylesheet" href="media-queries.css">
 </head>
 <body>
-    <div class="logo-wrap">
-        <h1 class="corner-logo">
-            <span class="red">C</span>
-            <span class="white">u</span>
-            <span class="orange">b</span>
-            <span class="green">e</span>
-            <span class="red" id="hyphen">-</span>
-            <span class="yellow">J</span>
-            <span class="blue">S</span>
-        </h1>
-        <p class="dimension-label">3x3x3</p>
-    </div>
     
-    <section class="timer-scramble-section">
-        <div class="timer-div">
-            <span class="minutes" hidden>0</span>
-            <span class="colon" hidden>:</span>
-            <span class="seconds">0</span>
-            <span class="decimal-point">.</span>
-            <span class="milliseconds">00</span>
+        <div class="logo-wrap">
+            <h1 class="corner-logo">
+                <span class="red">C</span>
+                <span class="white">u</span>
+                <span class="orange">b</span>
+                <span class="green">e</span>
+                <span class="red" id="hyphen">-</span>
+                <span class="yellow">J</span>
+                <span class="blue">S</span>
+            </h1>
+            <p class="dimension-label">3x3x3</p>
         </div>
-        <div class="instructions-div">
-            <p class="desktop-instructions">(Press spacebar to start/stop timer)</p>
-            <p class="mobile-instructions">Touch screen to start/stop timer</p>
+        
+        <section class="timer-scramble-section">
+            <div class="timer-div">
+                <span class="minutes" hidden>0</span>
+                <span class="colon" hidden>:</span>
+                <span class="seconds">0</span>
+                <span class="decimal-point">.</span>
+                <span class="milliseconds">00</span>
+            </div>
+            <div class="instructions-div">
+                <p class="desktop-instructions">(Press spacebar to start/stop timer)</p>
+                <p class="mobile-instructions">Touch screen to start/stop timer</p>
+            </div>
+            <div class="scramble-div">
+                <p class="js-scramble"></p>
+            </div>
+        </section>
+        <div class="opaque-background">
+            <div class="popup-div" hidden>
+                <form action="POST" class="solve-notes-form">
+                    <h3 class='popup-title' hidden>Add notes</h3>
+                    <p class="popup-data new-solve-time" hidden></p>
+                    <p class="popup-data new-solve-alg" hidden></p>
+                    <textarea name="notes" id="solve-notes" cols="25" rows="10" placeholder="Notes" maxlength="350"></textarea>
+                    <button class='submit-notes' type='submit' hidden>Done</button>
+                </form>
+            </div>
         </div>
-        <div class="scramble-div">
-            <p class="js-scramble"></p>
-        </div>
-    </section>
-    <section class="stats-notes-section">
-        <div class="column column1">
-            <h2 class="column-title column2-title">Notes for this solve</h2>
-            <form action="POST" class="solve-notes-form">
-                <textarea name="notes" id="solve-notes" cols="25" rows="10" placeholder="Make important notes about this solve here" maxlength="160"></textarea>
-                <!--<div contenteditable="true" class="contenteditable"></div>-->
-            </form>
-        </div>
-        <div class="column column2">
-            <h2 class="column-title column1-title">Previous Solve</h2>
-            <ul class="solve-list">
-                <li class="solve-list-item time">23.13 sec</li>
-                <li class="solve-list-item solve-scramble">F D' U2 U' L2 D' B B' B' L2 L2 D L D' D U' L' R2 L' F'</li>
-                <li class="solve-list-item solve-notes">Lol first time with the OLL's. That did a lot to lower my time. I still need to finish the white cross faster...</li>
-            </ul>
-        </div>
-        <div class="column column3">
-            <h2 class="column-title column3-title">Best Solve</h2>
-            <ul class="solve-list">
-                <li class="solve-list-item time">18.73 sec</li>
-                <li class="solve-list-item solve-scramble">F' F' R D2 R L F' R' L' U2 F2 B' U2 B' F' F' R2 D L L2</li>
-                <li class="solve-list-item solve-notes">OMG what did I just do?!?! That was amazing... my first under twenty sec solve so exciting</li>
-            </ul>
-        </div>
-    </section>
+        <section class="stats-notes-section">
+            <div class="column column1">
+                <h2 class="column-title column1-title">Previous Solve</h2>
+                <ul class="solve-list">
+                    <li class="solve-list-item time">23.13 sec</li>
+                    <li class="solve-list-item solve-scramble">F D' U2 U' L2 D' B B' B' L2 L2 D L D' D U' L' R2 L' F'</li>
+                    <li class="solve-list-item solve-notes">Lol first time with the OLL's. That did a lot to lower my time. I still need to finish the white cross faster...</li>
+                </ul>
+            </div>
+            <div class="column column2">
+                <h2 class="column-title column2-title">Best Solve</h2>
+                <ul class="solve-list">
+                    <li class="solve-list-item time">18.73 sec</li>
+                    <li class="solve-list-item solve-scramble">F' F' R D2 R L F' R' L' U2 F2 B' U2 B' F' F' R2 D L L2</li>
+                    <li class="solve-list-item solve-notes">OMG what did I just do?!?! That was amazing... my first under twenty sec solve so exciting</li>
+                </ul>
+            </div>
+        </section>
+    
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="client.js"></script>

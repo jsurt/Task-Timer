@@ -120,6 +120,11 @@ input:focus {
     border-bottom: 3px solid #FFD500;
 }
 
+.input-filled {
+    outline: 0;
+    border-bottom: 3px solid #FFD500;
+}
+
 input::placeholder {
     color: #ffffff;
 }

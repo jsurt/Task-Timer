@@ -1,6 +1,7 @@
 @media only screen and (min-width: 600px) {
     .logo-wrap {
         width: 100%;
+        z-index: 20;
     }
     .logo {
         font-size: 108px;
@@ -30,7 +31,7 @@
     }
 
     .timer-scramble-section {
-        top: 20%;
+        top: 250px;
     }
 
     .scramble-div {
@@ -43,7 +44,8 @@
         position: relative;
         top: 450px;
         display: grid;
-        grid-template-columns: 33% 33% 33%;
+        grid-template-columns: 45% 45%;
+        grid-column-gap: 10%;
     }
 }
 

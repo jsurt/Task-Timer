@@ -1,5 +1,14 @@
 'use strict'
 
+/* Styling for login/signup forms
+$(function() {
+    const $input = $('input');
+    const $inputValue = $('input').val();
+    if (!$inputValue) {
+        $input.addClass('input-filled');
+    }
+})*/   
+
 // This code is to display the requested form, either login or sign up
 function selectLoginOrSignupForm() {
     let $loginLink = $('.login-link');
@@ -31,11 +40,19 @@ selectLoginOrSignupForm();
 // AJAX request to the backend for user sign up
 function userSignUp() {
     $('.submit-signup').click(() => {
-        $('.signup-form').submit((event) => {
+        const $password = $('#password').val();
+        const $confirmPassword = $('#confirm-password').val();
+        if ($password === $confirmPassword) {
+            $('.signup-form').submit((event) => {
+                event.preventDefault();
+                console.log('form submitted');
+                postUserSignUp();
+            });
+        } else {
             event.preventDefault();
-            console.log('form submitted');
-            postUserSignUp();
-        });
+            alert('Passwords do not match');
+            $('#password, #confirm-password').val('');
+        }
     });   
 }
 
@@ -81,30 +98,32 @@ function testDisplayData() {
     getAndDisplayTimes();
 }
 
-function testFunction() {
-     console.log('this is a test');
-}
-
 // For stopwatch
-let status = 0;
+let timerStatus = 0;
 let time = 0;
+let seconds = 0;
 
 function startTimer() {
-    status = 1;
+    timerStatus = 1;
     timer();
 }
 
 function stopTimer() {
-    status = 0;
+    timerStatus = 0;
+    seconds =  (time * 0.01) + 0.01;
+    console.log(seconds);
 }
 
 function resetTimer() {
-    status = 0;
+    $('.seconds').html('0');
+    $('.milliseconds').html('00');
+    console.log(time);
+    timerStatus = 0;
     time = 0;
 }
 
 function timer() {
-    if (status == 1) {
+    if (timerStatus == 1) {
         setTimeout(function() {
             time++
             let min = Math.floor(time/100/60);
@@ -128,43 +147,61 @@ function timer() {
     }
 }
 
-//For starting and stopping timer
-$('body').keydown(function(e){
-    if (e.keyCode == 32) {
-        if (status == 0) {
-            resetTimer();
-            $('.logo-wrap').hide();
-            $('.instructions-div').hide();
-            $('.scramble-div').hide();
-            $('.stats-notes-section').hide();
-            $('*').addClass('js-timer-ready-color');
-            $('.timer-div').addClass('center-timer');
-        }
-    }
-})
 
-$('body').keyup(function(e){
-    if(e.keyCode == 32){
-        if (status == 0) {
+function listenForSpaceBarDown() {
+    const $popup = $('.popup-div');
+    $('body').keydown(function(e){
+        if (e.keyCode == 32 && !($popup.is(':visible'))) {
+            let $solvenotes = $('#solve-notes');
+           
+                if (timerStatus == 0) {
+                    resetTimer();
+                    $('.logo-wrap, .instructions-div, .scramble-div, .stats-notes-section').hide();
+                    $('*').addClass('js-timer-ready-color');
+                    $('.timer-div').addClass('center-timer');
+                };
             
-            $('*').addClass('js-timer-running-color');
-            $('.timer-div').addClass('center-timer');
-            startTimer();
         } else {
-            $('.logo-wrap').show();
-            $('.instructions-div').show();
-            $('.scramble-div').show();
-            $('.stats-notes-section').show();
-            $('*').removeClass('js-timer-running-color').removeClass('js-timer-ready-color');
-            $('.timer-div').removeClass('center-timer');
-            stopTimer();
-            
+            console.log('test');
         }
-    }
- });
+    });
+};
+
+function listenForSpaceBarUp() {
+    const $popup = $('.popup-div');
+    $('body').keyup(function(e){
+        if(e.keyCode == 32 && !($popup.is(':visible'))){
+            let $solvenotes = $('#solve-notes');
+    
+                if (timerStatus == 0) {
+                    startTimer();
+                    $('*').addClass('js-timer-running-color')
+                } else {
+                    stopTimer();
+                    $('.logo-wrap, .instructions-div, .scramble-div, .stats-notes-section').show();
+                    $('*').removeClass('js-timer-running-color').removeClass('js-timer-ready-color');
+                    $('.timer-div').removeClass('center-timer');
+                    showPopUpForm();
+                };
+            
+        } else {
+            console.log('test');
+        }
+    });
+};
+
+function showPopUpForm() {
+    $('.opaque-background').addClass('js-opaque-background');
+    $('.popup-div, .popup-title, .popup-data, .submit-notes').attr('hidden', false);
+    $('.solve-notes-form').addClass('popup-form');
+    $('.new-solve-time').prepend(`${seconds} seconds`);
+    $('.new-solve-alg').html(scrambleAlg);
+}
 
 
 // Generate random turns for a cube scramble
+let scrambleAlg = [];
+
 const dataForScrambleAlg = [
     "R",
     "R'",
@@ -187,7 +224,7 @@ const dataForScrambleAlg = [
 ];
 
 function generateScrambleAlg(data) {
-    let scrambleAlg = [];
+    //let scrambleAlg = [];
     for (let i = 0; i < 20; i++) {
         let randomIndex = Math.floor(Math.random() * 18);
         scrambleAlg.push(`${data[randomIndex]}   `);
@@ -200,6 +237,10 @@ function displayScrambleAlg(data) {
     $('.js-scramble').append(generateScrambleAlg(dataForScrambleAlg));
 };
 
-displayScrambleAlg(dataForScrambleAlg);
-
+$(function(){
+    displayScrambleAlg(dataForScrambleAlg);
+    listenForSpaceBarDown();
+    listenForSpaceBarUp();
+})
+    
 

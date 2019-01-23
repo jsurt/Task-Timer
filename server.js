@@ -1,11 +1,18 @@
+'use strict';
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 mongoose.Promise = global.Promise;
 
 const { PORT, DATABASE_URL } = require('./config');
-const { Solve, User } = require('./models')
+const { Solve, User } = require('./models');
+
+const { router: usersRouter } = require('./users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -19,6 +26,14 @@ app.use(function (req, res, next) {
   }
   next();
 });
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+app.use('/users/', usersRouter);
+app.use('/api/auth/', authRouter);
+
+const jwtAuth = passport.authenticate('jwt', { session: false });
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/login.html');
@@ -180,8 +195,9 @@ app.get('/solves/:id', (req, res) => {
     });
 });
 
+//Create user
 app.post('/users', (req, res) => {
-    const requiredFields = ['firstName', 'lastName', 'userName'];
+    const requiredFields = ['firstName', 'lastName', 'userName', 'password'];
     for (let i = 0; i < requiredFields.length; i++) {
       const field = requiredFields[i];
       if (!(field in req.body)) {
@@ -193,14 +209,15 @@ app.post('/users', (req, res) => {
     User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      userName: req.body.userName
+      userName: req.body.userName,
+      password: req.body.password
     })
       .then(user => {
         res.status(200).json(user.serialize())
       })
       .catch(err => {
         console.error(err);
-        res.status(500).json({message: 'Internal server error'});
+        res.status(500).json({message: 'Internal server error occurred'});
       })
 });
 

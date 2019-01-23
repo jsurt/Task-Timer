@@ -15,7 +15,7 @@ body {
     top: 0px;
     left: 0px;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
     background: #000000;
 }
 
@@ -31,8 +31,8 @@ body {
     padding-left: 5px;
     padding-bottom: 5px;
     font-size: 22px;
-    border-left: 2px solid #0045AD;
-    border-bottom: 2px solid #FFD500
+    border-left: 2px solid rgb(0, 69, 173);
+    border-bottom: 2px solid #FFD500;
 }
 
 .timer-scramble-section {
@@ -71,9 +71,10 @@ body {
     width: 320px;
     margin: auto; 
     position: relative;
-    top: 275px;
+    top: 300px;
     display: grid;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 50% 50%;
+    justify-items: center;
 }
 
 
@@ -84,15 +85,11 @@ body {
     border-bottom: 2px solid;
 }
 
-.column1-title {
-    border-bottom-color:#FF5900;
-} 
-
-.column2-title { 
+.column1-title { 
     border-bottom-color:#B90000;
 }
 
-.column3-title {
+.column2-title {
     border-bottom-color:#009B48;
 }
 
@@ -111,6 +108,7 @@ body {
 }
 
 #solve-notes {
+    width: 85%;
     resize: none;
     display: block;
     margin: auto;
@@ -133,13 +131,62 @@ body {
 }
 
 .js-timer-ready-color {
-    background: #B90000;
+    background: #009B48;
 }
 
 .js-timer-running-color {
-    background: #009B48;
+    background: #B90000;
 }
 
 .center-timer {
     margin-top: 80%;
 }
+
+/*Styles for popup form*/
+.popup-data {
+    width: 85%;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.js-opaque-background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 110;
+}
+
+.popup-form {
+    position: fixed;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0px;
+    background: #FFD500;
+    font-family: 'Raleway';
+    color: #000000;
+    z-index: 100;
+}
+
+.submit-notes {
+    width: 75px;
+    background: #000000;
+    margin: 10px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    transition: background 0.5s;
+}
+
+.submit-notes:hover {
+    cursor: pointer;
+    background: #333333;
+  }

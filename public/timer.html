@@ -7,26 +7,36 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway|Staatliches" rel="stylesheet">
-    <link rel="stylesheet" href="timer-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
     <link rel="stylesheet" href="logo-styles.css">
+    <link rel="stylesheet" href="grid.css">
+    <link rel="stylesheet" href="timer-styles.css">
     <link rel="stylesheet" href="media-queries.css">
+    <link rel="stylesheet" href="js-styles-classes.css">
 </head>
 <body>
-    
-        <div class="logo-wrap">
+    <div class="main-grid">
+        <header class="logo-wrap header">
             <h1 class="corner-logo">
-                <span class="red">C</span>
-                <span class="white">u</span>
-                <span class="orange">b</span>
-                <span class="green">e</span>
-                <span class="red" id="hyphen">-</span>
-                <span class="yellow">J</span>
-                <span class="blue">S</span>
+                <span class="header-letter">T</span>
+                <span class="header-letter">a</span>
+                <span class="header-letter">s</span>
+                <span class="header-letter">k</span>
+                <span class="white" id="hyphen">-</span>
+                <span class="header-letter">T</span>
+                <span class="header-letter">i</span>
+                <span class="header-letter">m</span>
+                <span class="header-letter">e</span>
+                <span class="header-letter">r</span>
             </h1>
-            <p class="dimension-label">3x3x3</p>
-        </div>
+            <section class="user-panel">
+                <button class="logout-btn">Logout</button>
+            </section>
+        </header>    
+
         
-        <section class="timer-scramble-section">
+
+        <section class="timer-section">
             <div class="timer-div">
                 <span class="minutes" hidden>0</span>
                 <span class="colon" hidden>:</span>
@@ -34,45 +44,41 @@
                 <span class="decimal-point">.</span>
                 <span class="milliseconds">00</span>
             </div>
-            <div class="instructions-div">
-                <p class="desktop-instructions">(Press spacebar to start/stop timer)</p>
-                <p class="mobile-instructions">Touch screen to start/stop timer</p>
-            </div>
-            <div class="scramble-div">
-                <p class="js-scramble"></p>
-            </div>
+        </section>
+        <section class="select-task-section">
+            <form class="select-task-form">
+                <select name="tasks" id="tasks" class="task-select">
+                    <option value="select-task" selected disabled>Select task...</option>
+                    <option value="email">Check Email</option>
+                    <option value="bills">Pay Bills</option>
+                    <option value="news">Read the News</option>
+                    <option value="study">Study</option>
+                    <option value="social-media">Social Media</option>
+                </select>
+                <button class="timer-btn start-timer-btn">Start</button>
+            </form>
         </section>
         <div class="opaque-background">
             <div class="popup-div" hidden>
-                <form action="POST" class="solve-notes-form">
-                    <h3 class='popup-title' hidden>Add notes</h3>
-                    <p class="popup-data new-solve-time" hidden></p>
-                    <p class="popup-data new-solve-alg" hidden></p>
-                    <textarea name="notes" id="solve-notes" cols="25" rows="10" placeholder="Notes" maxlength="350"></textarea>
-                    <button class='submit-notes' type='submit' hidden>Done</button>
+                <form action="POST" class="task-notes-form">
+                    <h3 class='popup-title'></h3>
+                    <p class="popup-data new-task-date"></p>
+                    <p class="popup-data new-task-time"></p>
+                    <textarea name="notes" id="task-notes" cols="25" rows="10" placeholder="What did you get done?" maxlength="350"></textarea>
+                    <button class='submit-task' type='submit'>Save</button>
+                    <button class="drop-task" type="button">Discard</button>
                 </form>
             </div>
         </div>
-        <section class="stats-notes-section">
-            <div class="column column1">
-                <h2 class="column-title column1-title">Previous Solve</h2>
-                <ul class="solve-list">
-                    <li class="solve-list-item time">23.13 sec</li>
-                    <li class="solve-list-item solve-scramble">F D' U2 U' L2 D' B B' B' L2 L2 D L D' D U' L' R2 L' F'</li>
-                    <li class="solve-list-item solve-notes">Lol first time with the OLL's. That did a lot to lower my time. I still need to finish the white cross faster...</li>
-                </ul>
-            </div>
-            <div class="column column2">
-                <h2 class="column-title column2-title">Best Solve</h2>
-                <ul class="solve-list">
-                    <li class="solve-list-item time">18.73 sec</li>
-                    <li class="solve-list-item solve-scramble">F' F' R D2 R L F' R' L' U2 F2 B' U2 B' F' F' R2 D L L2</li>
-                    <li class="solve-list-item solve-notes">OMG what did I just do?!?! That was amazing... my first under twenty sec solve so exciting</li>
-                </ul>
-            </div>
-        </section>
-    
+        <h2 class="subheader">Recent Tasks</h2>
+        <section class="prior-task task1"></section>
+        <section class="prior-task task2"></section>
+        <section class="prior-task task3"></section>
+    </div><!--End of .main-grid-->
+    <div class="btn-wrapper">
+        <button class="see-times-btn">See all</button>
+    </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="client.js"></script>
+<script src="timer.js"></script>
 </html>

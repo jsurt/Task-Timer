@@ -4,53 +4,22 @@
     margin-bottom: 5px;
     font-size: 62px;
     font-family: "Staatliches";
+    color: #279292;
 }
 
 .corner-logo {
-    position: absolute;
-    top: 1px;
-    left: 10px;
-    margin-top: 5px;
+    margin-top: 0px;
+    font-size: 20px;
     font-family: "Staatliches";
+    color: #279292;
 }
 
-.red {
-    color: #B90000;
+.header-letter {
     text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.white {
-    color: #ffffff;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.orange {
-    color: #FF5900;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.green {
-    color: #009B48;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.yellow {
-    color: #FFD500;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.blue {
-    color: #0045AD;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
+    text-decoration-color: #F34141;
 }
 
 #hyphen {
-    text-decoration: none;
+    color: #005A5A;
 }
 

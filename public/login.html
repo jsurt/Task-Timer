@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Task Timer</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway|Staatliches" rel="stylesheet">
     <link rel="stylesheet" href="login-styles.css">
     <link rel="stylesheet" href="logo-styles.css">
@@ -14,13 +14,16 @@
     <div class="main-wrap">
         <div class="logo-wrap">
             <h1 class="logo">
-                <span class="red">C</span>
-                <span class="white">u</span>
-                <span class="orange">b</span>
-                <span class="green">e</span>
-                <span class="red" id="hyphen">-</span>
-                <span class="yellow">J</span>
-                <span class="blue">S</span>
+                <span class="header-letter">T</span>
+                <span class="header-letter">a</span>
+                <span class="header-letter">s</span>
+                <span class="header-letter">k</span>
+                <span class="white" id="hyphen">-</span>
+                <span class="header-letter">T</span>
+                <span class="header-letter">i</span>
+                <span class="header-letter">m</span>
+                <span class="header-letter">e</span>
+                <span class="header-letter">r</span>
             </h1>
         </div>    
         <div class="forms-wrap">
@@ -31,11 +34,11 @@
         </div>
             <div class="login-form-wrap">
                 <form action="POST" class="login-form">
-                    <!--<label for="username">Username</label>-->
-                    <input type="text" id="username" autocomplete="off" placeholder="Username">
+                    <!--<label for="username">username</label>-->
+                    <input type="text" id="login-username" autocomplete="off" placeholder="Username" value="demo123">
                     <!--<label for="password">Password</label>-->
-                    <input type="password" id="password" autocomplete="off" placeholder="Password">
-                    <p class="demo-info">For a quick trial, use username "demo123" and password "password"</p>
+                    <input type="password" id="login-password" autocomplete="off" placeholder="Password" value="password123">
+                    <p class="demo-info">For a quick trial, use username "demo123" and password "password123"</p>
                     <div class="button-div">
                         <button class="submit-login" type="submit">Login</button>
                     </div>
@@ -46,9 +49,9 @@
                     <h2 class="signup-header">Sign Up</h2>
                     <input type="text" id="firstName" autocomplete="off" placeholder="Firstname"/>
                     <input type="text" id="lastName" autocomplete="off" placeholder="Lastname"/>  
-                    <input type="text" id="userName" autocomplete="off" placeholder="Username"/> 
-                    <input type="password" id="password" autocomplete="off" placeholder="Password"/> 
-                    <input type="password" id="confirm-password" autocomplete="off" placeholder="Confirm password"/>
+                    <input type="text" id="create-username" autocomplete="off" placeholder="Username"/> 
+                    <input type="password" id="create-password" autocomplete="off" placeholder="Password"/> 
+                    <input type="password" id="create-confirm-password" autocomplete="off" placeholder="Confirm password"/>
                     <div class="button-div">
                         <button class="submit-signup" type="submit">Sign Up</button>
                     </div>
@@ -59,5 +62,5 @@
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="client.js"></script>
+<script src="login.js"></script>
 </html>

@@ -9,18 +9,19 @@ const router = express.Router();
 
 const createAuthToken = function(user) {
   return jwt.sign({ user }, config.JWT_SECRET, {
-    subject: user.userName,
+    subject: user.username,
     expiresIn: config.JWT_EXPIRY,
     algorithm: "HS256"
   });
 };
 
-const localAuth = passport.authenticate("local", { session: false });
-router.use(bodyParser.json());
+const localAuth = passport.authenticate("local", {
+  session: false,
+  failWithError: true
+});
 
 // '/auth/login' works when the localAuth middleware is taken out
 router.post("/login", localAuth, (req, res) => {
-  console.log('"/auth/login" is starting to work');
   console.log(req.user.serialize());
   const authToken = createAuthToken(req.user.serialize());
   res.json({ authToken });

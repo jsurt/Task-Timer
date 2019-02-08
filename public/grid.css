@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.main-grid {
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header"
+        "timer timer"
+        "select-task select-task"
+        "subheader subheader"
+        "priorTask1 priorTask1"
+        "priorTask2 priorTask2"
+        "priorTask3 priorTask3";
+}
+
+.header {
+    grid-area: header,
+}
+
+/*.logo-wrap {
+    grid-area: header;
+    justify-self: left;
+    align-self: start;
+    margin-top: 0px;
+}
+
+.user-panel {
+    grid-area: user;
+    justify-self: right;
+    align-self: start;
+    margin-top: 0px;
+    padding-right: 10px;
+    text-align: right;
+}*/
+
+.timer-section {
+    grid-area: timer;
+    justify-self: center;
+}
+
+.select-task-section {
+    grid-area: select-task;
+    justify-self: center;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+.subheader {
+    grid-area: subheader;
+    justify-self: center;
+}
+
+.task1, .task2, .task3 {
+    justify-self: center;
+}
+
+.task1 {
+    grid-area: priorTask1;
+}
+
+.task2 {
+    grid-area: priorTask2;
+}
+
+.task3 {
+    grid-area: priorTask3;
+}

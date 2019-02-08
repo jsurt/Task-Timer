@@ -15,13 +15,12 @@
         height: 300px;
     }
     .minutes, .seconds {
-        font-size: 164px;
+        font-size: 64px;
     }
     
     .colon, .decimal-point, .milliseconds {
-        font-size: 96px;
+        font-size: 48px;
     }
-
     .desktop-instructions {
         display: block;
     }
@@ -30,8 +29,9 @@
         display: none;
     }
 
-    .timer-scramble-section {
-        top: 250px;
+    .timer-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
 
     .scramble-div {
@@ -47,14 +47,39 @@
         grid-template-columns: 45% 45%;
         grid-column-gap: 10%;
     }
+
+    .main-grid {
+        overflow: auto;
+        display: grid;
+        grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+        grid-template-areas: 
+            "header header . . . user"
+            ". . timer timer . ."
+            ". select-task select-task select-task select-task ."
+            ". . subheader subheader . ."
+            "priorTask1 priorTask1 priorTask2 priorTask2 priorTask3 priorTask3"
+    }
+    
+    .prior-task {
+        justify-self: center;
+        width: 90%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background: #242424;
+        font-family: "Raleway";
+    }
+
+    .start-timer-btn {
+        display: inline-block;
+    }
 }
 
-/*@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 870px) {
     .minutes, .seconds {
-        font-size: 164px;
+        font-size: 96px;
     }
     
     .colon, .decimal-point, .milliseconds {
-        font-size: 96px;
+        font-size: 64px;
     }
-}*/
+}

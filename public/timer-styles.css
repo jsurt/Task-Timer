@@ -7,186 +7,155 @@ body {
     color: #ffffff;
 }
 
-.logo-wrap {
-    overflow: auto;
-    overflow: initial;
-    height: 50px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    z-index: 1;
-    background: #000000;
-}
-
-.dimension-label, .instructions-div, .scramble-div, .stats-notes-section {
+.user-panel {
     font-family: "Raleway";
 }
 
-.dimension-label {
-    position: absolute;
-    top: 1px;
-    right: 5px;
-    margin-top: 5px;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    font-size: 22px;
-    border-left: 2px solid rgb(0, 69, 173);
-    border-bottom: 2px solid #FFD500;
+.timer-section {
+    font-weight: 100;
+    font-family: 'Major Mono Display', monospace;
 }
 
-.timer-scramble-section {
-    max-width: 1000px;
+.username {
+    margin-top: 0px;
+}
+
+.logout-btn,{
+    text-align: right;
+    padding: 5px;
+}
+
+.logout-btn, .submit-task, .drop-task, .delete-task {
+    display: block;
+    width: 60px;
+    height: 35px;
+    margin: auto;
     text-align: center;
-    position: absolute;
-    margin-bottom: 50px;
-    top: 200px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border-radius: 0px;
+    font-size: 14px;
+    color: #ffffff;
+    background: #F34141;
+    box-shadow: 1px 1px 0px #ffffff;
 }
 
-.timer-div {
-    font-family: 'Roboto Mono', monospace;
+.logout-btn:hover, .submit-task:hover, .drop-task:hover, .delete-task:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 0px #d0d0d0;
 }
 
 .minutes, .seconds {
-    font-size: 64px;
+    font-size: 42px;
 }
 
 .colon, .decimal-point, .milliseconds {
-    font-size: 32px;
+    font-size: 28px;
 }
 
-.desktop-instructions {
-    font-size: 12px;
-    display: none;
+.select-task-section {
+    margin-top: 50px;
+    padding-top: 15px;
+    padding-bottom: 50px;
 }
 
-.scramble-div {
-    width: 320px;
-    font-size: 18px;
+#tasks {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #ffffff;
+    background: #666666;
+    background-image: url('https://image.flaticon.com/icons/svg/118/118738.svg');
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right;
+    background-position-x: 275px;
 }
 
-.stats-notes-section {
-    width: 320px;
-    margin: auto; 
-    position: relative;
-    top: 300px;
-    display: grid;
-    grid-template-rows: 50% 50%;
-    justify-items: center;
+#tasks:hover{
+    cursor: pointer;
 }
 
-
-.column-title {
-    padding-bottom: 3px;
-    text-align: center;
-    font-size: 18px;
-    border-bottom: 2px solid;
-}
-
-.column1-title { 
-    border-bottom-color:#B90000;
-}
-
-.column2-title {
-    border-bottom-color:#009B48;
-}
-
-.solve-list {
-    list-style-type: none;
-    padding: 0px;
-}
-
-.solve-list-item {
-    padding: 10px 15px 10px 15px;
-}
-
-.time {
-    color: #009B48;
-    padding-top: 0px;
-}
-
-#solve-notes {
-    width: 85%;
-    resize: none;
+.start-timer-btn {
+    outline: none;
+    width: 50px;
+    height: 50px;
     display: block;
     margin: auto;
-    padding: 5px;
-    font-size: 14px;
-    border-radius: 1px;
+    margin-top: 10px;
+    background: #ace83e;
     border: none;
-    background: #003f9d;
-    color: #ffffff;
-    transition: background-color 0.4s ease 0s;
+    border-radius: 50%;
+    transition: background 0.75s;
 }
 
-#solve-notes:focus {
-    background: #004cbd;
-    outline: none;
+.start-timer-btn:hover {
+    cursor: pointer;
+    background: #bcf94d;
 }
 
-#solve-notes::placeholder {
-    color: #ffffff;
-}
-
-.js-timer-ready-color {
-    background: #009B48;
-}
-
-.js-timer-running-color {
-    background: #B90000;
-}
-
-.center-timer {
-    margin-top: 80%;
-}
-
-/*Styles for popup form*/
-.popup-data {
-    width: 85%;
+.subheader {
+    width: 160px;
     margin: auto;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-family: "Staatliches";
+    font-size: 32px;
+    color: #ffaaaa;
 }
 
-.js-opaque-background {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 110;
+.prior-task {
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: #242424;
+    font-family: "Raleway";
 }
 
-.popup-form {
-    position: fixed;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 320px;
-    margin: auto;
+.prior-task-title {
+    margin-top: 0px;
     padding: 10px;
     text-align: center;
-    border-radius: 0px;
-    background: #FFD500;
-    font-family: 'Raleway';
-    color: #000000;
-    z-index: 100;
+    text-decoration: underline #D46A6A;
+    color: #279292;
+    background: #181818;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-.submit-notes {
-    width: 75px;
-    background: #000000;
-    margin: 10px auto;
+.task-details-list {
+    padding: 0px;
+    list-style: none;
+}
+
+.prior-task-item {
+    padding: 5px;
+}
+
+.btn-wrapper {
+    overflow: auto;
+    width: 100%;
     padding: 10px;
-    border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    transition: background 0.5s;
 }
 
-.submit-notes:hover {
+.see-times-btn {
+    display: block;
+    width: 105px;
+    height: 50px;
+    margin: auto;
+    margin-top: 45px;
+    text-align: center;
+    border-radius: 0px;
+    color: #ffffff;
+    font-size: 18px;
+    background: #279292;
+    box-shadow: 2px 2px 0px #ffffff;
+}
+
+.see-times-btn:hover {
     cursor: pointer;
-    background: #333333;
-  }
+    box-shadow: 3px 3px 0px #d0d0d0;
+}

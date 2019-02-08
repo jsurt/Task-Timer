@@ -11,7 +11,7 @@ const jsonParser = bodyParser.json();
 // Post to register a new user
 router.post("/", jsonParser, (req, res) => {
   console.log("hello world");
-  const requiredFields = ["userName", "password"];
+  const requiredFields = ["username", "password"];
   const missingField = requiredFields.find(field => !(field in req.body));
 
   if (missingField) {
@@ -23,7 +23,7 @@ router.post("/", jsonParser, (req, res) => {
     });
   }
 
-  const stringFields = ["userName", "password", "firstName", "lastName"];
+  const stringFields = ["username", "password", "firstName", "lastName"];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== "string"
   );
@@ -37,7 +37,7 @@ router.post("/", jsonParser, (req, res) => {
     });
   }
 
-  const explicityTrimmedFields = ["userName", "password"];
+  const explicityTrimmedFields = ["username", "password"];
   const nonTrimmedField = explicityTrimmedFields.find(
     field => req.body[field].trim() !== req.body[field]
   );
@@ -52,7 +52,7 @@ router.post("/", jsonParser, (req, res) => {
   }
 
   const sizedFields = {
-    userName: {
+    username: {
       min: 1
     },
     password: {
@@ -83,26 +83,26 @@ router.post("/", jsonParser, (req, res) => {
     });
   }
 
-  let { userName, password, firstName = "", lastName = "" } = req.body;
+  let { username, password, firstName = "", lastName = "" } = req.body;
   firstName = firstName.trim();
   lastName = lastName.trim();
 
-  return User.find({ userName })
+  return User.find({ username })
     .count()
     .then(count => {
       if (count > 0) {
         return Promise.reject({
           code: 422,
           reason: "ValidationError",
-          message: "Username already taken",
-          location: "userName"
+          message: "username already taken",
+          location: "username"
         });
       }
       return User.hashPassword(password);
     })
     .then(hash => {
       return User.create({
-        userName,
+        username,
         password: hash,
         firstName,
         lastName
@@ -118,7 +118,7 @@ router.post("/", jsonParser, (req, res) => {
       }
       res
         .status(500)
-        .json({ code: 500, message: "Internal server error occurred" });
+        .json({ code: 500, message: "Internal server error occurred!!" });
     });
 });
 

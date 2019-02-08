@@ -2,18 +2,10 @@
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 
-const solveSchema = mongoose.Schema({
-  time: Number,
-  notes: String,
-  scrambleAlg: String,
-  solverId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  date: String
-});
-
 const userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
-  userName: {
+  username: {
     type: String,
     unique: true,
     required: true
@@ -24,25 +16,37 @@ const userSchema = mongoose.Schema({
   }
 });
 
+const taskSchema = mongoose.Schema({
+  date: String,
+  time: String,
+  task: String,
+  notes: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+});
+
 userSchema.virtual("fullName").get(function() {
   return `${this.firstName} ${this.lastName}`;
 });
 
-solveSchema.methods.serialize = function() {
+taskSchema.methods.serialize = function() {
   return {
     id: this._id,
-    solverId: this.solverId,
+    userId: this.userId,
+    date: this.date,
     time: this.time,
-    notes: this.notes,
-    scrambleAlg: this.scrambleAlg,
-    date: new Date()
+    task: this.task,
+    notes: this.notes
   };
 };
 
 userSchema.methods.serialize = function() {
   return {
+    id: this._id,
     fullName: this.fullName || "",
-    userName: this.userName || ""
+    username: this.username || ""
   };
 };
 
@@ -54,7 +58,8 @@ userSchema.statics.hashPassword = function(password) {
   return bcrypt.hash(password, 10);
 };
 
-const Solve = mongoose.model("Solve", solveSchema);
+//const Solve = mongoose.model("Solve", solveSchema);
 const User = mongoose.model("User", userSchema);
+const Task = mongoose.model("Task", taskSchema);
 
-module.exports = { Solve, User };
+module.exports = { User, Task };

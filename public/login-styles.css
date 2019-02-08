@@ -31,44 +31,6 @@ body {
     font-family: "Staatliches";
 }
 
-/* Colors for logo */
-
-.red {
-    color: #B90000;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.white {
-    color: #ffffff;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.orange {
-    color: #FF5900;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.green {
-    color: #009B48;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.yellow {
-    color: #FFD500;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
-.blue {
-    color: #0045AD;
-    text-decoration: underline;
-    text-decoration-color: #ffffff; 
-}
-
 #hyphen {
     text-decoration: none;
 }
@@ -106,7 +68,7 @@ input {
     width: 175px;
     border-top: 0px;
     border-left: 0px;
-    border-bottom: 2px solid #B90000;
+    border-bottom: 2px solid #F34141;
     border-right: 0px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -117,12 +79,12 @@ input {
 
 input:focus {
     outline: 0;
-    border-bottom: 3px solid #FFD500;
+    border-bottom: 3px solid #ACE33D;
 }
 
 .input-filled {
     outline: 0;
-    border-bottom: 3px solid #FFD500;
+    border-bottom: 3px solid #ACE33D;
 }
 
 input::placeholder {
@@ -135,7 +97,12 @@ input::placeholder {
     position: absolute;
     bottom: 0px;
     color: #ffffff;
+    font-size: 14px;
     font-style: italic;
+}
+
+.login-error {
+    color: #B90000;
 }
 
 .password-requirements {
@@ -160,7 +127,7 @@ input::placeholder {
 
 .login-link:hover, .signup-link:hover {
     font-size: 20px;  
-    text-decoration: underline #B90000;  
+    text-decoration: underline #F34141;  
 }
 
 .links-divider {
@@ -177,27 +144,24 @@ input::placeholder {
 }
 
 .submit-login, .submit-signup {
-    /*position: relative;*/
     width: 105px;
     height: 50px;
     margin: auto;
     margin-top: 45px;
-    border: none;
-    border-radius: 2px;
+    border-radius: 0px;
     color: #ffffff;
     font-size: 18px;
-    background: #009B48;
-    background-position: center; 
-    
+    background: #93D60C;
+    box-shadow: 2px 2px 0px #ffffff;
 }
 
 .submit-login:hover, .submit-signup:hover {
     cursor: pointer;
-    background: #00ae51;
+    box-shadow: 3px 3px 0px #d0d0d0;
 }
 
 .selected-form {
     color: #ffffff;
     font-size: 20px;
-    text-decoration: underline #009B48;
+    text-decoration: underline #93D60C;
 }

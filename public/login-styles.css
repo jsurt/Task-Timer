@@ -91,6 +91,13 @@ input::placeholder {
     color: #ffffff;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px rgb(0, 0, 0) inset !important;
+}
+
 .demo-info {
     width: 275px;
     margin: auto;

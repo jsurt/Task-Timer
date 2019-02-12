@@ -1,10 +1,11 @@
 "use strict";
 
 window.onload = function() {
-  getOldTasks();
+  getRecentTasks();
+  getAllTasks();
 };
 
-function getOldTasks() {
+function getRecentTasks() {
   console.log("Getting tasks");
   const token = localStorage.getItem("token");
   const settings = {
@@ -15,34 +16,86 @@ function getOldTasks() {
       Authorization: `Bearer ${token}`
     },
     success: function(data) {
-      displayOldTasks(data);
+      console.log(data.length);
+      displayRecentTasks(data);
     }
   };
   $.ajax(settings);
 }
 
-function displayOldTasks(data) {
-  const tasks = data.tasks;
-  const mostRecentTasks = tasks.slice(Math.max(tasks.length - 3, 1)).reverse();
-  console.log(mostRecentTasks);
-  const $task1 = $(".task1");
-  const $task2 = $(".task2");
-  const $task3 = $(".task3");
-  for (let i = 1; i < 4; i++) {
-    $(`.task${i}`).html(`
-    <h3 class="prior-task-title column1-title">${
-      mostRecentTasks[i - 1].task
-    }</h3>
+function displayRecentTasks(data) {
+  const sortedTasks = data.tasks.reverse();
+  console.log(sortedTasks);
+  sortedTasks.forEach(function(task, index) {
+    $(
+      `.task${index}`
+    ).html(`<h3 class="prior-task-title column1-title">${task.task}</h3>
     <ul class="task-details-list">
-        <li class="prior-task-item date">${mostRecentTasks[i - 1].date}</li>
-        <li class="prior-task-item time">${mostRecentTasks[i - 1].time}</li>
-        <li class="prior-task-item notes">${mostRecentTasks[i - 1].notes}</li>
+        <li class="prior-task-item date">${task.date}</li>
+        <li class="prior-task-item time">${task.time}</li>
+        <li class="prior-task-item notes">${task.notes}</li>
     </ul>
     <button class="delete-task" type="button" data-id=${
-      mostRecentTasks[i - 1].id
+      task.id
     }>Delete</button>`);
-  }
+  });
 }
+
+function handleGetAllTasks() {
+  $(".all-tasks-btn").click(event => {
+    event.preventDefault();
+    $(".all-tasks-btn").html("See less");
+    $(".prior-task").hide();
+    $(".all-tasks").attr("hidden", false);
+    handleHideAllTasks();
+  });
+}
+
+function handleHideAllTasks() {
+  $(".all-tasks-btn").click(event => {
+    event.preventDefault();
+    $(".all-tasks-btn").html("See more");
+    $(".prior-task").show();
+    $(".all-tasks").attr("hidden", true);
+    handleGetAllTasks();
+  });
+}
+
+function getAllTasks() {
+  console.log("Getting tasks");
+  const token = localStorage.getItem("token");
+  const settings = {
+    url: "http://localhost:8080/tasks",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    success: function(data) {
+      console.log(data);
+      displayAllTasks(data);
+    }
+  };
+  $.ajax(settings);
+}
+
+function displayAllTasks(data) {
+  const allTasks = $(".all-tasks");
+  const allSortedTasks = data.tasks.reverse();
+  allSortedTasks.forEach(function(task) {
+    $(allTasks).append(`<div class="js-all-tasks">
+    <h3 class="prior-task-title">${task.task}</h3>
+    <ul class="task-details-list">
+        <li class="prior-task-item date">${task.date}</li>
+        <li class="prior-task-item time">${task.time}</li>
+        <li class="prior-task-item notes">${task.notes}</li>
+    </ul>
+    <button class="delete-task" type="button" data-id=${task.id}>Delete</button>
+    </div>`);
+  });
+}
+
+handleGetAllTasks();
 
 // For stopwatch
 let timerStatus = 0;
@@ -188,7 +241,7 @@ function postNewTask(date, time, task, notes) {
     success: function() {
       console.log("Now we are cooking with gas");
       removePopup();
-      getOldTasks();
+      getRecentTasks();
     },
     error: function(err) {
       console.log(err);

@@ -15,6 +15,7 @@
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
+    z-index: 200;
 }
 
 .js-popup-form {
@@ -31,6 +32,7 @@
     font-family: 'Raleway';
     color: #000000;
     border-radius: 3px;
+    
 }
 
 /*Styles for popup elements*/
@@ -76,4 +78,15 @@
     margin-bottom: 5px;
     margin-left: 3px;
     background: #F34141;
+}
+
+.js-all-tasks {
+    position: relative;
+    width: 80%;
+    height: 260px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: #242424;
+    font-family: "Raleway";
 }

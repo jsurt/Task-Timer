@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="logo-styles.css">
     <link rel="stylesheet" href="grid.css">
     <link rel="stylesheet" href="timer-styles.css">
-    <link rel="stylesheet" href="media-queries.css">
     <link rel="stylesheet" href="js-styles-classes.css">
+    <link rel="stylesheet" href="media-queries.css">
 </head>
 <body>
     
@@ -62,20 +62,22 @@
                         <h3 class='popup-title'></h3>
                         <p class="popup-data new-task-date"></p>
                         <p class="popup-data new-task-time"></p>
-                        <textarea name="notes" id="task-notes" cols="25" rows="10" placeholder="What did you get done?" maxlength="350"></textarea>
+                        <textarea name="notes" id="task-notes" cols="25" rows="10" placeholder="What did you get done?" maxlength="170"></textarea>
                         <button class='submit-task' type='submit'>Save</button>
                         <button class="drop-task" type="button">Discard</button>
                     </form>
                 </div>
             </div>
             <h2 class="subheader">Recent Tasks</h2>
+            <!--<section class="prior-tasks"></section>-->
+            <section class="prior-task task0" role="region" aria-live="polite"></section>
             <section class="prior-task task1" role="region" aria-live="polite"></section>
             <section class="prior-task task2" role="region" aria-live="polite"></section>
-            <section class="prior-task task3" role="region" aria-live="polite"></section>
+            <section class="all-tasks" role="region" aria-live="polite" hidden></section>
     </main><!--End of .main-grid-->
 
     <div class="btn-wrapper">
-        <button class="see-times-btn">See all</button>
+        <button class="all-tasks-btn">See more</button>
     </div>
 
     <footer role="contentinfo">2019, Jack Surtees. View <a href="https://github.com/jsurt/js-cube" class="source" target="_blank">source</a></footer>

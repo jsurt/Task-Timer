@@ -55,6 +55,7 @@
             ". select-task select-task select-task select-task ."
             ". . subheader subheader . ."
             "priorTask1 priorTask1 priorTask2 priorTask2 priorTask3 priorTask3"
+            "all-tasks all-tasks all-tasks all-tasks all-tasks all-tasks";
     }
     
     .prior-task {
@@ -64,6 +65,17 @@
         border-radius: 5px;
         background: #242424;
         font-family: "Raleway";
+    }
+
+    .all-tasks {
+        width: 100%;
+        margin: auto;
+    }
+
+    .js-all-tasks {
+        width: 31.9%;
+        float: left;
+        margin: 10px;
     }
 
     .start-timer-btn {

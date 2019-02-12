@@ -19,7 +19,8 @@ body {
         "subheader subheader"
         "priorTask1 priorTask1"
         "priorTask2 priorTask2"
-        "priorTask3 priorTask3";
+        "priorTask3 priorTask3"
+        "all-tasks all-tasks";
 }
 
 /*.logo-wrap {
@@ -55,18 +56,21 @@ body {
     justify-self: center;
 }
 
-.task1, .task2, .task3 {
+.task0, .task1, .task2 {
     justify-self: center;
 }
 
-.task1 {
+.task0 {
     grid-area: priorTask1;
 }
 
-.task2 {
+.task1 {
     grid-area: priorTask2;
 }
 
-.task3 {
+.task2 {
     grid-area: priorTask3;
+}
+.all-tasks {
+    grid-area: all-tasks;
 }

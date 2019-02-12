@@ -9,7 +9,7 @@ function getRecentTasks() {
   console.log("Getting tasks");
   const token = localStorage.getItem("token");
   const settings = {
-    url: "http://localhost:8080/tasks",
+    url: "/tasks",
     type: "GET",
     contentType: "application/json",
     headers: {
@@ -65,7 +65,7 @@ function getAllTasks() {
   console.log("Getting tasks");
   const token = localStorage.getItem("token");
   const settings = {
-    url: "http://localhost:8080/tasks",
+    url: "/tasks",
     type: "GET",
     contentType: "application/json",
     headers: {

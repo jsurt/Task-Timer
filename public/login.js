@@ -43,7 +43,7 @@ function handleUserLogin() {
 function postUserLogin(username, password) {
   console.log("Sending ajax request for login");
   const settings = {
-    url: "http://localhost:8080/auth/login",
+    url: "/auth/login",
     type: "POST",
     dataType: "json",
     data: JSON.stringify({
@@ -93,7 +93,7 @@ function handleUserSignUp() {
 function postUserSignUp(firstName, lastName, username, password) {
   console.log("Sending ajax request");
   const settings = {
-    url: "http://localhost:8080/users",
+    url: "/users",
     type: "POST",
     dataType: "json",
     data: JSON.stringify({
@@ -114,7 +114,7 @@ function postUserSignUp(firstName, lastName, username, password) {
 //Go to user's timer page
 function requestTimerPage(token) {
   const settings = {
-    url: "http://localhost:8080/tasks",
+    url: "/tasks",
     type: "GET",
     contentType: "application/json",
     headers: {

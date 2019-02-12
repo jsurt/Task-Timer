@@ -28,13 +28,6 @@ function displayOldTasks(data) {
   const $task1 = $(".task1");
   const $task2 = $(".task2");
   const $task3 = $(".task3");
-  /*const oldTaskTemplate = `
-  <h3 class="prior-task-title column1-title">${mostRecentTasks[i].task}</h3>
-  <ul class="task-details-list">
-      <li class="prior-task-item date">${mostRecentTasks[i].date}</li>
-      <li class="prior-task-item time">${mostRecentTasks[i].time}</li>
-      <li class="prior-task-item notes">${mostRecentTasks[i].notes}</li>
-  </ul>`;*/
   for (let i = 1; i < 4; i++) {
     $(`.task${i}`).html(`
     <h3 class="prior-task-title column1-title">${
@@ -45,12 +38,11 @@ function displayOldTasks(data) {
         <li class="prior-task-item time">${mostRecentTasks[i - 1].time}</li>
         <li class="prior-task-item notes">${mostRecentTasks[i - 1].notes}</li>
     </ul>
-    <button class="delete-task" type="button">Delete</button>`);
+    <button class="delete-task" type="button" data-id=${
+      mostRecentTasks[i - 1].id
+    }>Delete</button>`);
   }
 }
-
-//Button for delete. Temporarily removed
-//<button class="delete-task" type="button">Delete</button>
 
 // For stopwatch
 let timerStatus = 0;
@@ -181,7 +173,7 @@ function postNewTask(date, time, task, notes) {
   };
   const token = localStorage.getItem("token");
   const settings = {
-    url: "http://localhost:8080/tasks",
+    url: "/tasks",
     type: "POST",
     dataType: "json",
     data: data,
@@ -206,16 +198,19 @@ function postNewTask(date, time, task, notes) {
 }
 
 function handleDeleteTask() {
-  $(".delete-task").click(event => {
+  $(".prior-task").on("click", ".delete-task", event => {
     event.preventDefault();
-    deleteTask();
+    const itemId = $(event.currentTarget).attr("data-id");
+    console.log(`Deleting item ${itemId}`);
+    deleteTask(itemId);
   });
 }
 
-function deleteTask() {
+function deleteTask(id) {
+  console.log("Deleting item");
   const token = localStorage.getItem("token");
   const settings = {
-    url: "http://localhost:8080/:id",
+    url: `/tasks/${id}`,
     type: "DELETE",
     dataType: "json",
     headers: {

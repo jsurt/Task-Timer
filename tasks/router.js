@@ -44,10 +44,13 @@ router.post("/", jwtAuth, (req, res) => {
     });
 });
 
-router.delete("/:id", jwtAuth, (req, res) => {
+router.delete("/tasks/:id", jwtAuth, (req, res) => {
   Task.findByIdAndRemove(req.params.id)
     .then(expense => res.status(204).end())
-    .catch(err => res.status(500).json({ message: "Internal server error" }));
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: "Internal server error" });
+    });
 });
 
 module.exports = { router };

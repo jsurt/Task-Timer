@@ -16,7 +16,6 @@ function getRecentTasks() {
       Authorization: `Bearer ${token}`
     },
     success: function(data) {
-      console.log(data.length);
       displayRecentTasks(data);
     }
   };
@@ -62,6 +61,7 @@ function handleHideAllTasks() {
 }
 
 function getAllTasks() {
+  $(".all-tasks").empty();
   console.log("Getting tasks");
   const token = localStorage.getItem("token");
   const settings = {
@@ -251,7 +251,7 @@ function postNewTask(date, time, task, notes) {
 }
 
 function handleDeleteTask() {
-  $(".prior-task").on("click", ".delete-task", event => {
+  $("main").on("click", ".delete-task", event => {
     event.preventDefault();
     const itemId = $(event.currentTarget).attr("data-id");
     console.log(`Deleting item ${itemId}`);
@@ -271,7 +271,8 @@ function deleteTask(id) {
     },
     success: function() {
       console.log("Now we are cooking with gas");
-      getOldTasks();
+      document.location.reload();
+      getRecentTasks();
     },
     error: function(err) {
       console.log(err);

@@ -44,7 +44,7 @@ router.post("/", jwtAuth, (req, res) => {
     });
 });
 
-router.delete("/tasks/:id", jwtAuth, (req, res) => {
+router.delete("/:id", jwtAuth, (req, res) => {
   Task.findByIdAndRemove(req.params.id)
     .then(expense => res.status(204).end())
     .catch(err => {

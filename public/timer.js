@@ -283,7 +283,6 @@ function deleteTask(id) {
 function handleDropTask() {
   $(".drop-task").click(event => {
     removePopup();
-    $(".new-task-time").empty();
   });
 }
 
@@ -294,6 +293,8 @@ function removePopup() {
   $("#tasks").val("select-task");
   fadeInPage();
   resetTimer();
+  $(".new-task-time").empty();
+  $("#task-notes").val("");
 }
 
 $(function() {

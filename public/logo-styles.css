@@ -2,12 +2,15 @@
     text-align: center;
     margin-top: 0px;
     margin-bottom: 5px;
-    font-size: 62px;
+    font-size: 40px;
     font-family: "Staatliches";
     color: #279292;
 }
 
 .corner-logo {
+    position: fixed;
+    top: 7px;
+    left: 5px;
     margin-top: 0px;
     font-size: 20px;
     font-family: "Staatliches";
@@ -16,7 +19,9 @@
 
 .header-letter {
     text-decoration: underline;
+    -webkit-text-decoration-line: underline;
     text-decoration-color: #F34141;
+    -webkit-text-decoration-color: #F34141;
 }
 
 #hyphen {

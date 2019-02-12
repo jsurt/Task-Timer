@@ -8,22 +8,18 @@ body {
 }
 
 .main-grid {
+    margin-top: 50px;
     overflow: auto;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: auto;
     grid-template-areas: 
-        "header header"
         "timer timer"
         "select-task select-task"
         "subheader subheader"
         "priorTask1 priorTask1"
         "priorTask2 priorTask2"
         "priorTask3 priorTask3";
-}
-
-.header {
-    grid-area: header,
 }
 
 /*.logo-wrap {

@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="js-styles-classes.css">
 </head>
 <body>
-    <div class="main-grid">
-        <header class="logo-wrap header">
+    
+        <header class="logo-wrap header" role="banner">
             <h1 class="corner-logo">
                 <span class="header-letter">T</span>
                 <span class="header-letter">a</span>
@@ -29,55 +29,57 @@
                 <span class="header-letter">e</span>
                 <span class="header-letter">r</span>
             </h1>
-            <section class="user-panel">
-                <button class="logout-btn">Logout</button>
-            </section>
+            <button class="logout-btn">Log out</button>
         </header>    
 
         
-
-        <section class="timer-section">
-            <div class="timer-div">
-                <span class="minutes" hidden>0</span>
-                <span class="colon" hidden>:</span>
-                <span class="seconds">0</span>
-                <span class="decimal-point">.</span>
-                <span class="milliseconds">00</span>
-            </div>
-        </section>
-        <section class="select-task-section">
-            <form class="select-task-form">
-                <select name="tasks" id="tasks" class="task-select">
-                    <option value="select-task" selected disabled>Select task...</option>
-                    <option value="email">Check Email</option>
-                    <option value="bills">Pay Bills</option>
-                    <option value="news">Read the News</option>
-                    <option value="study">Study</option>
-                    <option value="social-media">Social Media</option>
-                </select>
-                <button class="timer-btn start-timer-btn">Start</button>
-            </form>
-        </section>
-        <div class="opaque-background">
-            <div class="popup-div" hidden>
-                <form action="POST" class="task-notes-form">
-                    <h3 class='popup-title'></h3>
-                    <p class="popup-data new-task-date"></p>
-                    <p class="popup-data new-task-time"></p>
-                    <textarea name="notes" id="task-notes" cols="25" rows="10" placeholder="What did you get done?" maxlength="350"></textarea>
-                    <button class='submit-task' type='submit'>Save</button>
-                    <button class="drop-task" type="button">Discard</button>
+        <main class="main-grid" role="main">
+            <section class="timer-section" role="region">
+                <div class="timer-div" aria-live="polite">
+                    <span class="minutes" hidden>0</span>
+                    <span class="colon" hidden>:</span>
+                    <span class="seconds">0</span>
+                    <span class="decimal-point">.</span>
+                    <span class="milliseconds">00</span>
+                </div>
+            </section>
+            <section class="select-task-section" role="region">
+                <form class="select-task-form">
+                    <select name="tasks" id="tasks" class="task-select">
+                        <option value="select-task" selected disabled>Select task...</option>
+                        <option value="email">Check Email</option>
+                        <option value="bills">Pay Bills</option>
+                        <option value="news">Read the News</option>
+                        <option value="study">Study</option>
+                        <option value="social-media">Social Media</option>
+                    </select>
+                    <button class="timer-btn start-timer-btn">Start</button>
                 </form>
+            </section>
+            <div class="opaque-background" aria-live="assertive">
+                <div class="popup-div" hidden>
+                    <form action="POST" class="task-notes-form">
+                        <h3 class='popup-title'></h3>
+                        <p class="popup-data new-task-date"></p>
+                        <p class="popup-data new-task-time"></p>
+                        <textarea name="notes" id="task-notes" cols="25" rows="10" placeholder="What did you get done?" maxlength="350"></textarea>
+                        <button class='submit-task' type='submit'>Save</button>
+                        <button class="drop-task" type="button">Discard</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <h2 class="subheader">Recent Tasks</h2>
-        <section class="prior-task task1"></section>
-        <section class="prior-task task2"></section>
-        <section class="prior-task task3"></section>
-    </div><!--End of .main-grid-->
+            <h2 class="subheader">Recent Tasks</h2>
+            <section class="prior-task task1" role="region" aria-live="polite"></section>
+            <section class="prior-task task2" role="region" aria-live="polite"></section>
+            <section class="prior-task task3" role="region" aria-live="polite"></section>
+    </main><!--End of .main-grid-->
+
     <div class="btn-wrapper">
         <button class="see-times-btn">See all</button>
     </div>
+
+    <footer role="contentinfo">2019, Jack Surtees. View <a href="https://github.com/jsurt/js-cube" class="source" target="_blank">source</a></footer>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="timer.js"></script>

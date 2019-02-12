@@ -37,6 +37,8 @@
 .popup-title {
     color: #279292; 
     text-decoration: underline #D46A6A;
+    -webkit-text-decoration-line: underline;
+    -webkit-text-decoration-color: #D46A6A;
 }
 
 .new-task-date, .new-task-time {

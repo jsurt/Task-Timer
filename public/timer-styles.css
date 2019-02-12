@@ -7,7 +7,19 @@ body {
     color: #ffffff;
 }
 
-.user-panel {
+header {
+    width: 100%;
+    height: 45px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #000000;
+}
+
+.logout-btn {
+    position: fixed;
+    top: 5px;
+    right: 5px;
     font-family: "Raleway";
 }
 
@@ -16,19 +28,13 @@ body {
     font-family: 'Major Mono Display', monospace;
 }
 
-.username {
-    margin-top: 0px;
-}
-
 .logout-btn,{
     text-align: right;
-    padding: 5px;
 }
 
 .logout-btn, .submit-task, .drop-task, .delete-task {
     display: block;
-    width: 60px;
-    height: 35px;
+    height: 25px;
     margin: auto;
     text-align: center;
     border-radius: 0px;
@@ -159,3 +165,8 @@ body {
     cursor: pointer;
     box-shadow: 3px 3px 0px #d0d0d0;
 }
+
+footer {
+    display: none;
+}
+

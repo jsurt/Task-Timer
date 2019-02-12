@@ -137,6 +137,8 @@ input:-webkit-autofill:active  {
 .login-link:hover, .signup-link:hover {
     font-size: 20px;  
     text-decoration: underline #F34141;  
+    -webkit-text-decoration-line: underline;
+    -webkit-text-decoration-color: #93D60C;
 }
 
 .links-divider {
@@ -173,4 +175,10 @@ input:-webkit-autofill:active  {
     color: #ffffff;
     font-size: 20px;
     text-decoration: underline #93D60C;
+    -webkit-text-decoration-line: underline;
+    -webkit-text-decoration-color: #93D60C;
+}
+
+footer {
+    display: none;
 }

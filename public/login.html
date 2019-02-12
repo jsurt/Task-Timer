@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="main-wrap">
-        <div class="logo-wrap">
+        <header class="logo-wrap" role="banner">
             <h1 class="logo">
                 <span class="header-letter">T</span>
                 <span class="header-letter">a</span>
@@ -25,26 +25,24 @@
                 <span class="header-letter">e</span>
                 <span class="header-letter">r</span>
             </h1>
-        </div>    
-        <div class="forms-wrap">
+        </header>    
+        <main class="forms-wrap" role="main" aria-live="assertive">
             <div class="login-signup-links">
                 <a href="" class="login-link selected-form">Login</a>
                 <span class="links-divider"> | </span>
                 <a href="" class="signup-link">Sign up</a>
-        </div>
-            <div class="login-form-wrap">
+            </div>
+            <section class="login-form-wrap" role="region">
                 <form action="POST" class="login-form">
-                    <!--<label for="username">username</label>-->
                     <input type="text" id="login-username" autocomplete="off" placeholder="Username" value="demo123">
-                    <!--<label for="password">Password</label>-->
                     <input type="password" id="login-password" autocomplete="off" placeholder="Password" value="password123">
-                    <p class="demo-info">For a quick trial, use username "demo123" and password "password123"</p>
+                    <p class="demo-info" aria-live="assertive">For a quick trial, use username "demo123" and password "password123"</p>
                     <div class="button-div">
                         <button class="submit-login" type="submit">Login</button>
                     </div>
                 </form>
-            </div>
-            <div class="signup-form-wrap">
+            </section>
+            <section class="signup-form-wrap" role="region">
                 <form action="POST" class="signup-form" hidden>
                     <h2 class="signup-header">Sign Up</h2>
                     <input type="text" id="firstName" autocomplete="off" placeholder="Firstname"/>
@@ -56,10 +54,11 @@
                         <button class="submit-signup" type="submit">Sign Up</button>
                     </div>
                 </form>
-            </div>
+            </section>
             
-        </div>
+        </main>
     </div>
+    <footer role="contentinfo">2019, Jack Surtees. View <a href="https://github.com/jsurt/js-cube" class="source" target="_blank">source</a></footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="login.js"></script>

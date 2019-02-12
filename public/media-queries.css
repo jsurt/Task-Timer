@@ -1,11 +1,15 @@
 @media only screen and (min-width: 600px) {
-    .logo-wrap {
+    .header {
+        overflow: auto;
         width: 100%;
         z-index: 20;
     }
     .logo {
         font-size: 108px;
         margin: auto;
+    }
+    .logout-btn {
+        height: 35px;
     }
     input {
         width: 325px;
@@ -20,13 +24,6 @@
     
     .colon, .decimal-point, .milliseconds {
         font-size: 48px;
-    }
-    .desktop-instructions {
-        display: block;
-    }
-
-    .mobile-instructions {
-        display: none;
     }
 
     .timer-section {
@@ -49,11 +46,11 @@
     }
 
     .main-grid {
+        margin-top: 25px;
         overflow: auto;
         display: grid;
         grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
         grid-template-areas: 
-            "header header . . . user"
             ". . timer timer . ."
             ". select-task select-task select-task select-task ."
             ". . subheader subheader . ."
@@ -71,6 +68,22 @@
 
     .start-timer-btn {
         display: inline-block;
+    }
+
+    footer {
+        color: #ffffff;
+        display: block;
+        width: 100%;
+        margin: auto;
+        position: fixed;
+        bottom: 1px;
+        left: 0px;
+        text-align: center;
+        font-family: 'Raleway';
+    }
+
+    .source {
+        color: #bcf94d;
     }
 }
 

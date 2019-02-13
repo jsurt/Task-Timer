@@ -7,7 +7,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const jwtAuth = passport.authenticate("jwt", { session: false });
 
-router.get("/", jwtAuth, (req, res) => {
+router.get("/", (req, res) => {
   Task.find({ userId: req.user.id })
     .then(tasks => {
       res.json({

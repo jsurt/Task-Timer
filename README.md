@@ -1,6 +1,6 @@
 # Task-Timer
 
-https://enigmatic-falls-89101.herokuapp.com/timer.html
+https://enigmatic-falls-89101.herokuapp.com
 
 This app allows users to keep track of their productivity
 
